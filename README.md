@@ -3,7 +3,9 @@ wchar-clarification-request
 
 It is difficult and error-prone to write correct C programs for handling non-ASCII text.
 
-* Remove references to single bytes as "characters"
+Goals of this request:
+
+* Refer to the storage class of `char` as "byte" instead of "character"
 * Discourage use of `ctype` functions in favor of `wctype`
 * Add functions to idiomatically iterate `char *` strings as `wchar_t`
 * Clarify guarantees of `wchar_t`
