@@ -62,10 +62,3 @@ Is there a corresponding section for wide characters?
 
 > 7. A pointer to an object type may be converted to a pointer to a different object type. If the resulting pointer is not correctly aligned<sup>69)</sup> for the referenced type, the behavior is undefined. Otherwise, when converted back again, the result shall compare equal to the original pointer. When a pointer to an object is converted to a pointer to a byte type, the result points to the lowest addressed byte of the object. Successive increments of the result, up to the size of the object, yield pointers to the remaining bytes of the object.
 
-## 6.4.4.4 Character constants
-
-Less confident about this one. Are they characters or bytes here?
-
-> 5 The octal digits that follow the backslash in an octal escape sequence are taken to be part of the construction of a single byte for an integer character constant or of a single wide character for a wide character constant. The numerical value of the octal integer so formed specifies the value of the desired byte or wide character.
->
-> 6 The hexadecimal digits that follow the backslash and the letter x in a hexadecimal escape sequence are taken to be part of the construction of a single byte for an integer character constant or of a single wide character for a wide character constant. The numerical value of the hexadecimal integer so formed specifies the value of the desired byte or wide character.
