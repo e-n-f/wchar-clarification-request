@@ -44,4 +44,4 @@ Is there a corresponding section for wide characters?
 
 ## 6.2.5 Types
 
-> 15. The three types `char`, `signed char`, and `unsigned char` are collectively called the `byte` types. The implementation shall define `char` to have the same range, representation, and behavior as either `signed char` or `unsigned char`. <sup>45)</sup>
+> 15. The three types `char`, `signed char`, and `unsigned char` are collectively called the *byte* types. The implementation shall define `char` to have the same range, representation, and behavior as either `signed char` or `unsigned char`. <sup>45)</sup>
