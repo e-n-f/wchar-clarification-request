@@ -47,3 +47,7 @@ Is there a corresponding section for wide characters?
 > 15. The three types `char`, `signed char`, and `unsigned char` are collectively called the *byte* types. The implementation shall define `char` to have the same range, representation, and behavior as either `signed char` or `unsigned char`. <sup>45)</sup>
 
 > 28. A pointer to `void` shall have the same representation and alignment requirements as a pointer to a *byte* type.<sup>48)</sup> Similarly, pointers to qualified or unqualified versions of compatible types shall have the same representation and alignment requirements. All pointers to structure types shall have the same representation and alignment requirements as each other. All pointers to union types shall have the same representation and alignment requirements as each other. Pointers to other types need not have the same representation or alignment requirements.
+
+## 6.2.6 Representations of types
+
+> 5. Certain object representations need not represent a value of the object type. If the stored value of an object has such a representation and is read by an lvalue expression that does not have byte type, the behavior is undefined. If such a representation is produced by a side effect that modifies all or any part of the object by an lvalue expression that does not have character type, the behavior is undefined.<sup>50)</sup> Such a representation is called a trap representation.
