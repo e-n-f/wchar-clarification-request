@@ -8,7 +8,7 @@ Goals of this request:
 * Refer to the storage class of `char` as "byte" instead of "character"
 * Discourage use of `ctype` functions in favor of `wctype`
 * Add functions to idiomatically iterate `char *` strings as `wchar_t`
-* Clarify guarantees of `wchar_t`
+* Clarify representation of digits of `wchar_t`
 * Clarify what sets and what depends upon stream orientation
 * Clarify how to initialize `mbstate`
 
@@ -18,7 +18,7 @@ Goals of this request:
 
 ## 5.1.2.3 Program execution
 
-Use `getwchar` instead:
+Use `getwchar` instead, after the representation of digits is resolved.
 
 ## 5.2.1 Character sets
 
