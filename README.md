@@ -41,3 +41,7 @@ Is there a corresponding section for wide characters?
 > The *active position* is that location on a display device where the next character output by the `fputwc` function would appear. The intent of writing a printing character (as defined by the `iswprint` function) to a display device is to display a graphic representation of that character at the active position and then advance the active position to the next position on the current line. The direction of writing is locale-specific. If the active position is at the final position of a line (if there is one), the behavior of the display device is unspecified.
 >
 > **Forward references**: the `iswprint` function (7.4.1.8), the `fputwc` function (7.21.7.3)
+
+## 6.2.5 Types
+
+> 15. The three types `char`, `signed char`, and `unsigned char` are collectively called the `byte` types. The implementation shall define `char` to have the same range, representation, and behavior as either `signed char` or `unsigned char`. <sup>45)</sup>
