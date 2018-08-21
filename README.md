@@ -65,3 +65,6 @@ Is there a corresponding section for wide characters?
 ## 6.5 Expressions
 
 > 6. The *effective type* of an object for an access to its stored value is the declared type of the object, if any.<sup>88)</sup> If a value is stored into an object having no declared type through an lvalue having a type that is not a byte type, then the type of the lvalue becomes the effective type of the object for that access and for subsequent accesses that do not modify the stored value. If a value is copied into an object having no declared type using `memcpy` or `memmove`, or is copied as an array of byte type, then the effective type of the modified object for that access and for subsequent accesses that do not modify the value is the effective type of the object from which the value is copied, if it has one. For all other accesses to an object having no declared type, the effective type of the object is simply the type of the lvalue used for the access.
+>
+> …
+> — a byte type.
