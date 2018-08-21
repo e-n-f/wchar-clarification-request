@@ -45,3 +45,5 @@ Is there a corresponding section for wide characters?
 ## 6.2.5 Types
 
 > 15. The three types `char`, `signed char`, and `unsigned char` are collectively called the *byte* types. The implementation shall define `char` to have the same range, representation, and behavior as either `signed char` or `unsigned char`. <sup>45)</sup>
+
+> 28. A pointer to `void` shall have the same representation and alignment requirements as a pointer to a *byte* type.<sup>48)</sup> Similarly, pointers to qualified or unqualified versions of compatible types shall have the same representation and alignment requirements. All pointers to structure types shall have the same representation and alignment requirements as each other. All pointers to union types shall have the same representation and alignment requirements as each other. Pointers to other types need not have the same representation or alignment requirements.
