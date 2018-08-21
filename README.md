@@ -52,7 +52,7 @@ Is there a corresponding section for wide characters?
 
 ## 6.2.6 Representations of types
 
-> 5. Certain object representations need not represent a value of the object type. If the stored value of an object has such a representation and is read by an lvalue expression that does not have byte type, the behavior is undefined. If such a representation is produced by a side effect that modifies all or any part of the object by an lvalue expression that does not have character type, the behavior is undefined.<sup>50)</sup> Such a representation is called a trap representation.
+> 5. Certain object representations need not represent a value of the object type. If the stored value of an object has such a representation and is read by an lvalue expression that does not have byte type, the behavior is undefined. If such a representation is produced by a side effect that modifies all or any part of the object by an lvalue expression that does not have byte type, the behavior is undefined.<sup>50)</sup> Such a representation is called a trap representation.
 
 ## 6.3.1.1 Boolean, bytes, and integers
 
