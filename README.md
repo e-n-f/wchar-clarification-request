@@ -3,7 +3,7 @@ wchar-clarification-request
 
 It is difficult and error-prone to write correct C programs for handling non-ASCII text.
 
-The C99 standard attempted to provide a complete set of the necessary types, conversions, and utility functions for two text representations: multibyte characters as sequences of `char` bytes, and wide characters as single `wchar_t` words. However,
+The C99 standard attempted to provide a complete set of the necessary types, conversions, and utility functions for two text representations: multibyte characters as sequences of `char` bytes, and wide characters as single `wchar_t` code points. However,
 
 * `wchar_t` is popularly regarded as unportable and insufficent, because some platforms prematurely defined it to be only 16 bits wide.
 * The stream orientation concept for I/O makes it impossible to use wide character I/O in accordance with the spec in the presence of libraries that do I/O on the same streams.
