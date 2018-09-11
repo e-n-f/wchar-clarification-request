@@ -22,7 +22,7 @@ Taking as a given that `wchar_t` is frozen and cannot be made into a sufficient 
 * Defining the standard set of `stdio` functions for `char32_t` characters, using `mbstate_t` conversion state rather than stream orientation to regulate what types of objects may be written or read at what times.
 * Defining `nextc32type` (on the model of the BSD `nextwctype`) as a way to enumerate character classes.
 * Defining the order of digits in `char32_t`, or adding `c32digit` and `digitc32` functions to do the conversion.
-* Defining `c32at`, `c32next`, and `c32post` conversion functions that operate as idiomatic equivalents to `*cp`, `*cp++`, and `*++cp`.
+* Defining `c32at`, `c32step`, and `c32after` character iteration functions that operate as idiomatic equivalents to `*cp`, `*cp++`, and `*++cp`.
 * Systematically referring to `char` objects as "bytes" rather than "characters" throughout the standard.
 
 ## Goals
