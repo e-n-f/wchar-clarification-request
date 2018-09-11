@@ -26,6 +26,83 @@ Taking as a given that `wchar_t` is frozen and cannot be made into a sufficient 
 * Defining `c32at`, `c32step`, and `c32after` character iteration functions that operate as idiomatic equivalents to `*cp`, `cp++`/`*cp++`, and `*++cp`.
 * Systematically referring to `char` objects as "bytes" rather than "characters" throughout the standard.
 
+## Specifics:
+
+### Printf (in uchar.h):
+
+* `fu32printf`
+  * `%lls` format specifier for `uchar32_t *` strings
+  * `%llc` format specifier for `uchar32_t` characters
+* `fu32scanf`
+  * `%lls` and `%llc` format specifiers
+* `su32printf`
+* `su32scanf`
+* `vfu32printf`
+* `vfu32scanf`
+* `vsu32printf`
+* `vsu32scanf`
+* `vu32printf`
+* `vu32scanf`
+* `u32printf`
+* `u32scanf`
+
+### Character I/O (in uchar.h)
+
+* `fgetu32c`
+* `fgetu32s`
+* `fputu32c`
+* `fputu32s`
+* `getu32c`
+* `getu32char`
+* `putu32c`
+* `putu32char`
+* `ungetu32c`
+
+### Stream orientation
+
+* `fwide` equivalent: tk
+
+### Numeric conversion (in uchar.h)
+
+* `u32stod`
+* `u32stof`
+* `u32stold`
+* `u32stol`
+* `u32stoll`
+* `u32stoul`
+* `u32stoull`
+
+### String manipulation
+
+* `u32scpy`
+* `u32sncpy`
+* `u32memcpy
+* `u32memmove`
+* `u32scat`
+* `u32scmp`
+* `u32scoll`
+* `u32sncmp`
+* `u32sxfrm` (should be specified in more detail)
+* `u32memcmp`
+* `u32schr`
+* `u32scspn`
+* `u32sprbrk`
+* `u32srchr`
+* `u32sspn`
+* `u32sstr`
+* `u32stok`
+* `u32memchr`
+* `u32len`
+* `u32memset`
+* `u32sftime`
+
+
+
+
+
+
+------------------------------------------------------------------
+
 ## Goals
 
 Goals of this request:
