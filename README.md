@@ -23,6 +23,7 @@ Taking as a given that `wchar_t` is frozen and cannot be made into a sufficient 
 * Defining `nextc32type` (on the model of the BSD `nextwctype`) as a way to enumerate character classes.
 * Defining the order of digits in `char32_t`, or adding `c32digit` and `digitc32` functions to do the conversion.
 * Defining `c32at`, `c32next`, and `c32post` conversion functions that operate as idiomatic equivalents to `*cp`, `*cp++`, and `*++cp`.
+* Systematically referring to `char` objects as "bytes" rather than "characters" throughout the standard.
 
 ## Goals
 
