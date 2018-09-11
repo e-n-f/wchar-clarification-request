@@ -13,6 +13,17 @@ The C99 standard attempted to provide a complete set of the necessary types, con
 
 The C11 standard added three new character representations: UTF-8 multibyte strings and 16- and 32-bit wide characters. However, none of these types are useful, because no I/O interfaces or `ctype` functions are defined for them. UTF-8 strings are even less useful because no conversion functions are defined between them and any of the other character representations.
 
+## Proposal
+
+Taking as a given that `wchar_t` is frozen and cannot be made into a sufficient character type, I propose:
+
+* Using `char32_t` as the natural way of referring to code points.
+* Defining the standard set of `ctype` and `string` functions for `char32_t` characters.
+* Defining the standard set of `stdio` functions for `char32_t` characters, using `mbstate_t` conversion state rather than stream orientation to regulate what types of objects may be written or read at what times.
+* Defining `nextc32type` (on the model of the BSD `nextwctype`) as a way to enumerate character classes.
+* Defining the order of digits in `char32_t`, or adding `c32digit` and `digitc32` functions to do the conversion.
+* Defining `c32at`, `c32next`, and `c32post` conversion functions that operate as idiomatic equivalents to `*cp`, `*cp++`, and `*++cp`.
+
 ## Goals
 
 Goals of this request:
