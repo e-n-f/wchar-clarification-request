@@ -3,6 +3,18 @@ wchar-clarification-request
 
 It is difficult and error-prone to write correct C programs for handling non-ASCII text.
 
+The C99 standard attempted to provide a complete set of the necessary types, conversions, and utility functions for two text representations: multibyte characters as sequences of `char` bytes, and wide characters as single `wchar_t` words. However,
+
+* `wchar_t` is popularly regarded as unportable and insufficent, because some platforms prematurely defined it to be only 16 bits wide.
+* The stream orientation concept for I/O makes it impossible to use wide character I/O in accordance with the spec in the presence of libraries that do I/O on the same streams.
+* The standard does not specify whether the digits of `wchar_t` are contiguous and in order.
+* There is no way to enumerate the members of `wctype` character classes.
+* The `mbrtowc` function is clumsy and verbose to use as a character iterator.
+
+The C11 standard added three new character representations: UTF-8 multibyte strings and 16- and 32-bit wide characters. However, none of these types are useful, because no I/O interfaces or `ctype` functions are defined for them. UTF-8 strings are even less useful because no conversion functions are defined between them and any of the other character representations.
+
+## Goals
+
 Goals of this request:
 
 * Refer to the storage class of `char` as "byte" instead of "character"
