@@ -76,7 +76,7 @@ Taking as a given that `wchar_t` is frozen and cannot be made into a sufficient 
 
 * `u32scpy`
 * `u32sncpy`
-* `u32memcpy
+* `u32memcpy`
 * `u32memmove`
 * `u32scat`
 * `u32scmp`
