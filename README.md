@@ -15,7 +15,7 @@ The C11 standard added three new character representations: UTF-8 multibyte stri
 
 ## Proposal
 
-Taking as a given that `wchar_t` is frozen and cannot be made into a sufficient character type, I propose:
+Taking as a given that `wchar_t` is frozen and cannot be made into a sufficient portable character type, I propose:
 
 * Using `char32_t` as the natural way of referring to code points.
 * Defining the standard set of `ctype` and `string` functions for `char32_t` characters.
