@@ -1,7 +1,7 @@
 wchar-clarification-request
 ===========================
 
-It is difficult and error-prone to write correct C programs for handling non-ASCII text.
+It is difficult and error-prone to write correct C programs for handling non-ASCII text using only the facilities provided by the standard.
 
 The C99 standard attempted to provide a complete set of the necessary types, conversions, and utility functions for two text representations: multibyte characters as sequences of `char` bytes, and wide characters as single `wchar_t` code points. However,
 
