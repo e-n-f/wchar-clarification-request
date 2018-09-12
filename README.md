@@ -26,6 +26,22 @@ Taking as a given that `wchar_t` is frozen and cannot be made into a sufficient 
 * Defining `c32at`, `c32step`, and `c32after` character iteration functions that operate as idiomatic equivalents to `*cp`, `cp++`/`*cp++`, and `*++cp`.
 * Systematically referring to `char` objects as "bytes" rather than "characters" throughout the standard.
 
+## Or should it be a structured type?
+
+Should code points actually be:
+
+```
+struct codepoint {
+    char32_t c;
+}
+
+struct cpint {
+    c32int_t c;
+}
+```
+
+so that implicit conversions to and from `char` are errors instead of accidentally succeeding?
+
 ## Specifics:
 
 ### Printf (in uchar.h):
