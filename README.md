@@ -26,6 +26,14 @@ Taking as a given that `wchar_t` is frozen and cannot be made into a sufficient 
 * Defining `c32at`, `c32step`, and `c32after` character iteration functions that operate as idiomatic equivalents to `*cp`, `cp++`/`*cp++`, and `*++cp`.
 * Systematically referring to `char` objects as "bytes" rather than "characters" throughout the standard.
 
+## What's wrong with I/O?
+
+The very fact that `printf("%ls", …)` and `wprintf("%s", …)` exist indicate that it is possible to write wide strings to narrow streams, and vice versa, but these operations appear to be forbidden.
+
+Even if a programmer is extremely disciplined and avoids mixing character widths within their own program, it is difficult to control what other libraries will do. In particular, many libraries will write to `stderr` assuming it is a narrow stream. It is therefore difficult for a program to know that it can safely write wide strings to `stderr`.
+
+A reasonable behavior for output would be that it is always OK to write either bytes or wide characters to a stream if its internal `mbstate_t` is in the initial state, and that the internal `mbstate_t` will always be left in the initial state after writing a wide or narrow newline.
+
 ## Or should it be a structured type?
 
 Should code points actually be:
