@@ -26,6 +26,18 @@ Taking as a given that `wchar_t` is frozen on existing platforms and cannot be u
 * Defining `c32at`, `c32step`, and `c32after` character iteration functions that operate as idiomatic equivalents to `*cp`, `cp++`/`*cp++`, and `*++cp`.
 * Systematically referring to `char` objects as "bytes" rather than "characters" throughout the standard.
 
+## Risks
+
+It is still very easy to accidentally use a `'c'` narrow character constant where a `U'c'` `char32_t` character constant is intended, or to check against `EOF` instead of `C32EOF`. For this reason, perhaps the standard wide character type should be a structured type:
+
+```
+typedef struct {
+    char32_t c;
+} character32;
+```
+
+so that it is impossible to accidentally compare or assign between bytes and narrow characters without doing an appropriate conversion.
+
 ## What's wrong with I/O?
 
 The very fact that `printf("%ls", …)` and `wprintf("%s", …)` exist indicate that it is possible to write wide strings to narrow streams, and vice versa, but these operations appear to be forbidden.
