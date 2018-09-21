@@ -46,22 +46,6 @@ Even if a programmer is extremely disciplined and avoids mixing character widths
 
 A reasonable behavior for output would be that it is always OK to write either bytes or wide characters to a stream if its internal `mbstate_t` is in the initial state, and that the internal `mbstate_t` will always be left in the initial state after writing a wide or narrow newline.
 
-## Or should it be a structured type?
-
-Should code points actually be:
-
-```
-struct codepoint {
-    char32_t c;
-}
-
-struct cpint {
-    c32int_t c;
-}
-```
-
-so that implicit conversions to and from `char` are errors instead of accidentally succeeding?
-
 ## Specifics:
 
 ### Printf (in uchar.h):
