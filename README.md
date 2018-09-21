@@ -28,15 +28,15 @@ Taking as a given that `wchar_t` is frozen on existing platforms and cannot be u
 
 ## Risks
 
-It is still very easy to accidentally use a `'c'` narrow character constant where a `U'c'` `char32_t` character constant is intended, or to check against `EOF` instead of `C32EOF`. For this reason, perhaps the standard wide character type should be a structured type:
+It is still very easy to accidentally use a `'c'` narrow character constant where a `U'c'` `char32_t` character constant is intended, or to check against `EOF` instead of `C32EOF`. For this reason, perhaps the standard wide character type should actually be a structured type:
 
 ```
 typedef struct {
     char32_t c;
-} character32;
+} codepoint_t;
 ```
 
-so that it is impossible to accidentally compare or assign between bytes and narrow characters without doing an appropriate conversion.
+so that it is impossible to accidentally compare or assign between bytes and codepoints without doing an appropriate conversion.
 
 ## What's wrong with I/O?
 
