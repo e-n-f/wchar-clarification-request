@@ -5,7 +5,7 @@ It is difficult and error-prone to write correct C programs for handling non-ASC
 
 The C99 standard attempted to provide a complete set of the necessary types, conversions, and utility functions for two text representations: multibyte characters as sequences of `char` bytes, and wide characters as single `wchar_t` code points. However,
 
-* `wchar_t` is popularly regarded as unportable and insufficent, because some platforms prematurely defined it to be only 16 bits wide.
+* `wchar_t` is popularly regarded as unportable and insufficent, because some platforms prematurely defined it to be only 16 bits wide and are locked in to that decision.
 * The stream orientation concept for I/O puts programs that attempt to read or write multibyte text in constant danger of accidentally invoking undefined behavior.
 * The standard does not specify whether the digits of `wchar_t` are contiguous and in order.
 * There is no way to enumerate the members of `wctype` character classes.
@@ -26,9 +26,9 @@ Taking as a given that `wchar_t` is frozen on existing platforms and cannot be u
 * Defining `c32at`, `c32step`, and `c32after` character iteration functions that operate as idiomatic equivalents to `*cp`, `cp++`/`*cp++`, and `*++cp`.
 * Systematically referring to `char` objects as "bytes" rather than "characters" throughout the standard.
 
-## Risks
+## Extended proposal
 
-It is still very easy to accidentally use a `'c'` narrow character constant where a `U'c'` `char32_t` character constant is intended, or to check against `EOF` instead of `C32EOF`. For this reason, perhaps the standard wide character type should actually be a structured type:
+It is still very easy to accidentally use a `'c'` narrow character constant where a `U'c'` `char32_t` character constant is intended, or to accidentally check against `EOF` instead of `C32EOF`. For this reason, perhaps the standard wide character type should actually be a structured type:
 
 ```
 typedef struct {
@@ -44,7 +44,7 @@ The very fact that `printf("%ls", …)` and `wprintf("%s", …)` exist indicate 
 
 Even if a programmer is extremely disciplined and avoids mixing character widths within their own program, it is difficult to control what other libraries will do. In particular, many libraries will write to `stderr` assuming it is a narrow stream. It is therefore difficult for a program to know that it can safely write wide strings to `stderr`.
 
-A reasonable behavior for output would be that it is always OK to write either bytes or wide characters to a stream if its internal `mbstate_t` is in the initial state, and that the internal `mbstate_t` will always be left in the initial state after writing a wide or narrow newline.
+A reasonable behavior for output would be that it is always OK to write either bytes or wide characters to a stream if its internal `mbstate_t` is in the initial state, and that the internal `mbstate_t` will always be left in the initial state after writing a wide or narrow newline or after calling `fflush` on the output stream.
 
 ## Specifics:
 
