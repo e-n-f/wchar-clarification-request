@@ -57,7 +57,7 @@ However, by using the same `mbstate_t` conversion state object for streams as fo
 * Reading the same line of text from a file as a byte string of multibyte characters
 * Reading those same multibyte characters from the file one byte at a time
 
-It should of course create an invalid file of multibyte characters (or return an error to the writer) if a byte that is not part of a legitimate multibyte character is written to a stream that is not in the initial conversion state, and it should likewise be an error to try to read a wide character from a file if the next available byte is not part of a legitimate multibyte character in the current conversion state. But these are errors that can be diagnosed, not undefined behavior that cannot be.
+It should of course return an error to the caller if a byte that is not part of a legitimate multibyte character is written to a stream that is not in the initial conversion state, and it should likewise be an error to try to read a wide character from a file if the next available byte is not part of a legitimate multibyte character in the current conversion state. But these are errors that can be diagnosed, not undefined behavior that cannot be.
 
 -----
 
