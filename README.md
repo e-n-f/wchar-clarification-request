@@ -18,9 +18,10 @@ The C11 standard added three new character representations: UTF-8 multibyte stri
 Taking as a given that `wchar_t` is frozen on existing platforms and cannot be used as a portable character type because it is too narrow, I propose:
 
 * Using `char32_t` as the ordinary way of referring to code points.
-* Defining the standard set of `ctype` and `string` functions for `char32_t` characters and strings.
 * Adding a `c32int_t` type and `C32EOF` constant for `char32_t` streams.
 * Defining the standard set of `stdio` functions for `char32_t` characters, with well-defined conversion rules rather than undefined behavior when reading or writing the wrong kind of data.
+* Defining the standard set of `c32type` and `string` functions for `char32_t` characters and strings.
+* Deprecating the `ctype` functions in favor of `c32type`, since `ctype` gives incorrect results for multibyte text.
 * Defining `nextc32type` (on the model of the BSD `nextwctype`) as a way to enumerate character classes.
 * Adding `digitc32toint` and `inttodigitc32` functions (on the model of the BSD `digittoint`) to convert between digit values and their corresponding characters (or defining the order of digits in `char32_t`).
 * Defining `c32at`, `c32post`, and `c32pre` character iteration functions that operate as idiomatic equivalents to `*cp`, `cp++`/`*cp++`, and `*++cp`.
