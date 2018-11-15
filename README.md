@@ -42,7 +42,7 @@ so that it is impossible to accidentally compare or assign between bytes and cod
 
 ## What's wrong with I/O?
 
-The very fact that `printf("%ls", …)` and `wprintf("%s", …)` exist indicate that it is possible to write wide strings to narrow streams, and vice versa, but these operations appear to be forbidden by the insistence that "Byte input/output functions shall not be applied to a wide-oriented stream and wide character input/output functions shall not be applied to a byte-oriented stream."
+The very fact that `printf("%ls", …)` and `wprintf("%s", …)` exist indicates that it is possible to write wide strings to narrow streams, and vice versa, but these operations appear to be forbidden by the requirement that "Byte input/output functions shall not be applied to a wide-oriented stream and wide character input/output functions shall not be applied to a byte-oriented stream."
 
 Even if a programmer is extremely disciplined and avoids mixing character widths within their own program, it is difficult to control what other libraries will do. In particular, many libraries will write to `stderr` assuming it is a narrow stream. It is therefore difficult for a program to know that it can safely write wide strings to `stderr`.
 
