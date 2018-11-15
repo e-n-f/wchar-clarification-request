@@ -23,8 +23,10 @@ Taking as a given that `wchar_t` is frozen on existing platforms and cannot be u
 * Defining the standard set of `stdio` functions for `char32_t` characters, with well-defined conversion rules rather than undefined behavior when reading or writing the wrong kind of data.
 * Defining `nextc32type` (on the model of the BSD `nextwctype`) as a way to enumerate character classes.
 * Adding `digitc32toint` and `inttodigitc32` functions (on the model of the BSD `digittoint`) to convert between digit values and their corresponding characters (or defining the order of digits in `char32_t`).
-* Defining `c32at`, `c32step`, and `c32after` character iteration functions that operate as idiomatic equivalents to `*cp`, `cp++`/`*cp++`, and `*++cp`.
+* Defining `c32at`, `c32post`, and `c32pre` character iteration functions that operate as idiomatic equivalents to `*cp`, `cp++`/`*cp++`, and `*++cp`.
 * Systematically referring to `char` objects as "bytes" rather than "characters" throughout the standard.
+
+These changes will enable a text handling model where strings are generally read from input streams and stored in memory as arrays of `char`, as is basically required by file system and operating system interfaces, but can easily be iterated, examined, and manipulated as `char32_t` code points, before being written back to arrays of `char` (using the existing `c32tomb` function) or to output streams.
 
 ## Extended proposal
 
@@ -44,7 +46,7 @@ The very fact that `printf("%ls", …)` and `wprintf("%s", …)` exist indicate 
 
 Even if a programmer is extremely disciplined and avoids mixing character widths within their own program, it is difficult to control what other libraries will do. In particular, many libraries will write to `stderr` assuming it is a narrow stream. It is therefore difficult for a program to know that it can safely write wide strings to `stderr`.
 
-A reasonable behavior for output would be that it is always OK to write either bytes or wide characters to a stream if its internal `mbstate_t` is in the initial state, and that the internal `mbstate_t` will always be left in the initial state after writing a wide or narrow newline or after calling `fflush` on the output stream.
+A more workable requirement for output would be that it is always OK to write either bytes or wide characters to a stream if its internal `mbstate_t` is in the initial state, and that the internal `mbstate_t` will always be left in the initial state after writing a wide or narrow newline or after calling `fflush` on the output stream.
 
 ## Specifics:
 
