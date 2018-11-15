@@ -19,7 +19,7 @@ Taking as a given that `wchar_t` is frozen on existing platforms and cannot be u
 
 * Using `char32_t` as the ordinary way of referring to code points.
 * Adding a `c32int_t` type and `C32EOF` constant for `char32_t` streams.
-* Defining the standard set of `stdio` functions for `char32_t` characters, with well-defined conversion rules rather than undefined behavior when reading or writing the wrong kind of data.
+* Defining the standard set of `stdio` functions for `char32_t` characters, with liberalized stream orientation rules as described below.
 * Defining the standard set of `c32type` and `string` functions for `char32_t` characters and strings.
 * Deprecating the `ctype` functions in favor of `c32type`, since `ctype` gives incorrect results for multibyte text.
 * Defining `nextc32type` (on the model of the BSD `nextwctype`) as a way to enumerate character classes.
