@@ -47,7 +47,7 @@ The very fact that `printf("%ls", …)` and `wprintf("%s", …)` exist indicates
 
 Even if a programmer is extremely disciplined and avoids mixing character widths within their own program, it is difficult to control what other libraries will do. In particular, many libraries will write to `stderr` assuming it is a narrow stream. It is therefore difficult for a program to know that it can safely write wide strings to `stderr`.
 
-However, by using the same `mbstate_t` conversion state object for streams as for in-memory operations, the standard effectively already requires, without ever actually saying, that a wide stream on disk is represented as multibyte characters in the same way that the same wide characters would be represented as multibyte characters in memory. If this can be made explicit, then the stream orientation concept is rendered unnecessary, as the following operations are all legitimate:
+However, by using the same `mbstate_t` conversion state object for streams as for in-memory operations, the standard effectively already requires, without ever actually saying, that a wide stream is represented on disk as multibyte characters in the same way that the same wide characters would be represented as multibyte characters in memory. If this can be made explicit, then the stream orientation concept is rendered unnecessary, as the following operations are all legitimate:
 
 * Writing a line of text to a file as a string of wide characters
 * Writing the same line of text to a file one wide character at a time
