@@ -46,7 +46,27 @@ The very fact that `printf("%ls", …)` and `wprintf("%s", …)` exist indicate 
 
 Even if a programmer is extremely disciplined and avoids mixing character widths within their own program, it is difficult to control what other libraries will do. In particular, many libraries will write to `stderr` assuming it is a narrow stream. It is therefore difficult for a program to know that it can safely write wide strings to `stderr`.
 
+By using the same `mbstate_t` conversion state object for streams as for in-memory operations, the standard effectively requires, without ever actually saying, that a wide stream on disk is represented as multibyte characters in the same way that the same wide characters would be represented as multibyte characters in memory. If this can be made explicit, then the stream orientation concept is rendered unnecessary, as the following operations are all legitimate:
+
+* Writing a line of text to a file as a string of wide characters
+* Writing the same line of text to a file one wide character at a time
+* Writing the same line of text to a file as a byte array of multibyte characters
+* Writing those same multibyte characters to a file one byte at a time
+* Reading a line of text from a file as a string of wide characters
+* Reading the same line of text from a file one wide character at a time
+* Reading the same line of text from a file as a byte string of multibyte characters
+* Reading those same multibyte characters from the file one byte at a time
+
+It should of course create an invalid file of multibyte characters (or return an error to the writer) if a byte that is not part of a legitimate multibyte character is written to it, and it should likewise be an error to try to read a wide character from a file if the next available byte is not part of a legitimate multibyte character. But these are errors that can be diagnosed, not undefined behavior that cannot be.
+
+-----
+
+
 A more workable requirement for output would be that it is always OK to write either bytes or wide characters to a stream if its internal `mbstate_t` is in the initial state, and that the internal `mbstate_t` will always be left in the initial state after writing a wide or narrow newline or after calling `fflush` on the output stream.
+
+## A workable file model
+
+The thing that the standard does not claim, but that programs need in practice, is that the representation of wide characters in an I/O stream is the same as the representation of those characters as a multibyte string in memory.
 
 ## Specifics:
 
